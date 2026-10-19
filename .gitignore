@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environment (uv creates this)
+.venv/
+
+# Tools
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Flask
+instance/
+.env
+.flaskenv
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,19 @@
+[project]
+name = "zelda-games"
+version = "0.1.0"
+description = "A small Flask app that lists Legend of Zelda games"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "flask>=3.1.3",
+    "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

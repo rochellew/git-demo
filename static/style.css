@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f4f1e8;
+  color: #222;
+}
+
+header {
+  background: #1f4d2b;
+  color: #f5d76e;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Each game is a row: a fixed-width box art column, then the card. */
+.game {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.box-art {
+  width: 140px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.box-art img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 4px;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border-left: 6px solid #c9a227;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+}
+
+.game h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.meta {
+  margin: 0 0 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #a00;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 0.85rem;
+  padding: 1rem;
+}
+
+footer a {
+  color: #1f4d2b;
+}
+
+@media (max-width: 500px) {
+  .game {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .box-art {
+    width: auto;
+  }
+}
