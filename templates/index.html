@@ -1,43 +1,46 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zelda Games</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zelda Games</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-  <header>
-    <h1>The Legend of Zelda</h1>
-    <p>{{ games|length }} games, oldest to newest</p>
-  </header>
+    <header>
+        <h1>The Legend of Zelda</h1>
+        <p>{{ games|length }} games, in chronological order!</p>
+    </header>
 
-  <main>
-    {% if error %}
-      <p class="error">Could not reach the Zelda API. Try again in a minute.</p>
-    {% endif %}
+    <main>
+        {% if error %}
+        <p class="error">Could not reach the Zelda API. Try again in a minute.</p>
+        {% endif %}
 
-    {% for game in games %}
-      <article class="game">
-        <div class="box-art">
-          {% if game.box_art %}
-            <img src="{{ game.box_art }}" alt="Box art for {{ game.name }}" loading="lazy">
-          {% endif %}
-        </div>
-        <div class="card">
-          <h2>{{ game.name }}</h2>
-          <p class="meta">
-            {{ game.year or "Unknown year" }} &middot; {{ game.developer }}
-          </p>
-          <p>{{ game.description }}</p>
-        </div>
-      </article>
-    {% endfor %}
-  </main>
+        {% for game in games %}
+        <article class="game">
+            <div class="box-art">
+                {% if game.box_art %}
+                <img src="{{ game.box_art }}" alt="Box art for {{ game.name }}" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="card">
+                <h2>{{ game.name }}</h2>
+                <p class="meta">
+                    {{ game.year or "Unknown year" }} &middot; {{ game.developer }}
+                </p>
+                <p>{{ game.description }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </main>
 
-  <footer>
-    Game data from the <a href="https://docs.zelda.fanapis.com">Zelda API</a>.
-    Box art from <a href="https://en.wikipedia.org">Wikipedia</a>.
-  </footer>
+    <footer>
+        Game data from the <a href="https://docs.zelda.fanapis.com">Zelda API</a>.
+        Box art from <a href="https://en.wikipedia.org">Wikipedia</a>.
+    </footer>
 </body>
+
 </html>
