@@ -12,6 +12,10 @@
     <header>
         <h1>The Legend of Zelda</h1>
         <p>40+ years, {{ games|length }} games, in chronological order!</p>
+        <form action="get">
+            <input type="search" name="q" value="{{ query }}" placeholder="Search games">
+            <button type="submit">Search</button>
+        </form>
     </header>
 
     <main>
