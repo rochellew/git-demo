@@ -107,3 +107,12 @@ def test_index_handles_api_failure(monkeypatch):
 
     assert response.status_code == 502
     assert "Could not reach the Zelda API" in response.get_data(as_text=True)
+
+def test_search_filters_games(monkeypatch):
+    monkeypatch.setattr(main, "fetch_games", lambda: [dict(g) for g in FAKE_GAMES])
+    client = main.app.test_client()
+
+    html = client.get("/?q=ocarina").get_data(as_text=True)
+
+    assert "Ocarina of Time" in html
+    assert "The first game" not in html

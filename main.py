@@ -7,7 +7,7 @@ Box art comes from the Wikipedia API: https://www.mediawiki.org/wiki/API:Main_pa
 import re
 
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 API_URL = "https://zelda.fanapis.com/api/games"
 WIKIPEDIA_URL = "https://en.wikipedia.org/w/api.php"
@@ -82,6 +82,10 @@ def index():
     except requests.RequestException:
         return render_template("index.html", games=[], error=True), 502
 
+    query = request.args.get("q", "").strip()
+    if query:
+        games = [g for g in games if query.lower() in g["name"].lower()]
+
     # Box art is a nice extra, so the page still works if Wikipedia is down.
     try:
         box_art = fetch_box_art([game["name"] for game in games])
@@ -93,7 +97,7 @@ def index():
         game["box_art"] = box_art.get(game["name"])
     games.sort(key=lambda g: g["year"] or 9999)
 
-    return render_template("index.html", games=games, error=False)
+    return render_template("index.html", games=games, error=False, query=query)
 
 
 if __name__ == "__main__":
