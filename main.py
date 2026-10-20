@@ -95,7 +95,7 @@ def index():
     for game in games:
         game["year"] = release_year(game)
         game["box_art"] = box_art.get(game["name"])
-    games.sort(key=lambda g: g["year"] or 9999)
+    games.sort(key=lambda g: g["year"] or 0, reverse=True)
 
     return render_template("index.html", games=games, error=False, query=query)
 
