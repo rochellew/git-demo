@@ -46,7 +46,7 @@ main {
 .card {
   flex: 1;
   background: #fff;
-  border-left: 6px solid #c9a227;
+  border-left: 6px solid #2b6cb0;
   border-radius: 4px;
   padding: 1rem 1.25rem;
 }
